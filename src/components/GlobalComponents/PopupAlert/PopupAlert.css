@@ -1,0 +1,46 @@
+/* PopupAlert.css */
+.popup-alert__container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.alert {
+    background: white;
+    border-radius: 8px;
+    padding: 12px 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+.alert.fade-out {
+    opacity: 0;
+}
+
+.alert-error {
+    background: #ffebee;
+    color: #c62828;
+}
+
+.alert-warning {
+    background: #fff3e0;
+    color: #ef6c00;
+}
+
+.alert-info {
+    background: #e3f2fd;
+    color: #0d47a1;
+}
+
+.popup-alert__close {
+    cursor: pointer;
+    font-size: 18px;
+}

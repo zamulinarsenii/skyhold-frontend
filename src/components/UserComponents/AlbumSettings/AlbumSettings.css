@@ -1,0 +1,24 @@
+.album-settings-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0 12px;
+    max-width: 500px;
+}
+
+.album-settings-container__save-btn {
+    display: none;
+    background-color: var(--accent-blue);
+    padding: 6px 12px;
+    border-radius: 16px;
+    transition: background-color 0.3s ease-in-out;
+    width: 150px;
+}
+
+.album-settings-container__save-btn.album-has-changes {
+    display: inline;
+}
+
+.album-settings-container__save-btn:hover {
+    background-color: var(--accent-blue-light);
+}

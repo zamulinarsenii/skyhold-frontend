@@ -1,0 +1,25 @@
+.album-visibility {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: 12px;
+}
+
+.album-visibility.visibility-public {
+    background-color: green;
+}
+
+.album-visibility.visibility-private {
+    background-color: red;
+}
+
+.album-visibility.visibility-friends {
+    background-color: yellow;
+    color: black;
+}
+
+.album-visibility.visibility-selected_friends {
+    background-color: orange;
+    color: black;
+}

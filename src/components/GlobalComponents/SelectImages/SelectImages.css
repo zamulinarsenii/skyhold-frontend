@@ -1,0 +1,27 @@
+.view-title-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.border-right-side {
+    border-right: 1px solid white;
+    padding-right: 12px;
+}
+
+.btn-with-icon {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.select-all-checkbox {
+    display: flex;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.select-all-checkbox span {
+    font-size: 14px;
+}

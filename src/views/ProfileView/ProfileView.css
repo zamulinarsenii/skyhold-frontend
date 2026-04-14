@@ -1,0 +1,24 @@
+.logout-btn {
+    height: 40px;
+    width: 300px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    background-color: var(--error-color);
+    padding: 6px;
+    justify-content: center;
+    border-radius: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.logout-btn img {
+    height: 24px;
+    width: 24px;
+}
+
+.profile-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}

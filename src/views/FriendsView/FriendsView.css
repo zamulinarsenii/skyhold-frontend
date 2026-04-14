@@ -1,0 +1,19 @@
+.search-input-container {
+    position: relative;
+}
+
+.search-input-icon {
+    position: absolute;
+    right: 10px;
+    top: calc(50% - 11px);
+}
+
+.search-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.friends-list .found-user:first-child {
+    border-radius: 12px 12px 0 0;
+}

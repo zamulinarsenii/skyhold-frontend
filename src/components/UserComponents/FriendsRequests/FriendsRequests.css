@@ -1,0 +1,64 @@
+.friends-bell {
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.friends-bell:hover {
+    background-color: var(--bg-surface);
+}
+
+.friends-bell.hasRequests {
+    background-color: var(--c-green);
+}
+
+.friends-bell.hasRequests:hover {
+    background-color: var(--c-green-hover);
+}
+
+.friends-bell-dropdown-menu {
+    position: absolute;
+    background-color: var(--bg-surface);
+    padding: 16px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    max-height: 400px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.friends-bell-dropdown-menu::-webkit-scrollbar {
+    display: none;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.accept-btn {
+    color: var(--c-green);
+    transition: color 0.2s ease;
+    padding-right: 6px;
+    margin-right: 10px;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.accept-btn:hover {
+    color: var(--c-green-hover);
+}
+
+.decline-btn {
+    color: var(--c-red);
+    transition: color 0.2s ease;
+}
+
+.decline-btn:hover {
+    color: var(--c-red-hover);
+}

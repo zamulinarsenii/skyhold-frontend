@@ -1,0 +1,223 @@
+@import './assets/fonts/fonts.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --default-margins: 24px;
+  --default-radius: 12px;
+
+  /* Тёмная цветовая схема */
+  --bg-body: #0a0f1a;
+  --bg-surface: #111827;
+  --bg-elevated: #1f2937;
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --accent-blue: #3b82f6;
+  --accent-blue-light: #60a5fa;
+  --border-color: #374151;
+  --shadow-blue: rgba(59, 130, 246, 0.3);
+  --error-color: #f87171;
+  --success-color: rgb(16, 204, 16);
+  --c-green: rgb(40, 140, 40);
+  --c-green-hover: rgb(65, 165, 65);
+  --c-red: rgb(150, 0, 0);
+  --c-red-hover: rgb(200, 0, 0);
+}
+
+body {
+  background-color: var(--bg-body);
+  color: var(--text-primary);
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+}
+
+.font-size-14 {
+  font-size: 14px;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  width: 100%;
+  gap: 16px;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
+
+a {
+  color: var(--accent-blue-light);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent-blue);
+}
+
+main {
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 12px;
+  border-radius: var(--default-radius);
+}
+
+main.login-main {
+  background: none;
+  box-shadow: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.view-title {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding: 0 12px;
+  min-height: 40px;
+}
+
+.page-images-counter {
+  position: absolute;
+  margin-left: 4px;
+  bottom: -16px;
+}
+
+.album-move {
+  color: var(--accent-blue);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.shyhold-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--accent-blue);
+  padding: 6px 12px;
+  justify-content: center;
+  border-radius: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.shyhold-btn:hover {
+  background-color: var(--accent-blue-light);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: var(--default-margins);
+  background-color: var(--bg-elevated);
+  border-radius: var(--default-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+form button[type="submit"] {
+  height: 40px;
+  background-color: var(--accent-blue);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 9999;
+}
+
+form button[type="submit"]:hover {
+  background-color: var(--accent-blue-light);
+}
+
+form button[type="submit"]:active {
+  transform: scale(0.98);
+}
+
+form button[type="submit"]:disabled {
+  background-color: var(--border-color);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.skyhold {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.login-form {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 720px;
+  background-color: var(--bg-surface);
+  box-shadow: 0 8px 24px var(--shadow-blue);
+}
+
+.login-form h2 {
+  font-size: 24px;
+}
+
+.login-form a {
+  align-self: flex-end;
+  width: fit-content;
+  margin-right: 8px;
+}
+
+.error {
+  color: var(--error-color);
+  font-size: 0.875rem;
+  margin-top: -0.5rem;
+  text-align: center;
+}
+
+.scroll-container {
+  overflow-y: scroll;
+  height: calc(100% - 32px);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 12px;
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-container-grid {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+
+}
+
+@media (max-width: 1440px) {
+  main {
+    width: calc(100% - 24px);
+  }
+}

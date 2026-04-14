@@ -1,0 +1,9 @@
+.btn-album-settings {
+    position: absolute;
+    right: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-album-settings:hover {
+    transform: rotate(180deg);
+}

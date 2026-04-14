@@ -1,0 +1,29 @@
+.shared-album__members,
+.album-container__members {
+    display: flex;
+    align-items: center;
+}
+
+.shared-album__members div,
+.album-container__members div {
+    margin-right: -15px;
+}
+
+.album-container__members .user-avatar {
+    width: 30px;
+    height: 30px;
+}
+
+.shared-album__members .user-avatar {
+    width: 40px;
+    height: 40px;
+}
+
+.members-count {
+    margin-left: 15px;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 2px;
+    border-radius: 4px;
+    font-weight: 400;
+    color: white;
+}

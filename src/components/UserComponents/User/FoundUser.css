@@ -1,0 +1,33 @@
+.found-user {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 8px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.found-user:hover {
+    background-color: var(--bg-elevated);
+}
+
+.found-user button {
+    transition: color 0.3s ease;
+    color: var(--c-green);
+}
+
+.found-user button:hover {
+    color: var(--c-green-hover);
+}
+
+.found-user-name {
+    display: flex;
+    flex-direction: column;
+}
+
+.found-user-name span:last-child {
+    font-size: 14px;
+    opacity: 0.5;
+}

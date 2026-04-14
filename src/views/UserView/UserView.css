@@ -1,0 +1,50 @@
+.profile-container .user-avatar {
+    width: 160px;
+    height: 160px;
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.profile-container__albums-title {
+    font-size: 24px;
+    font-weight: 700;
+    padding: 0 8px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.profile-container__add-friend {
+    width: fit-content;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+    padding-left: 8px;
+}
+
+.albums-filter {
+    width: fit-content;
+    display: flex;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.albums-filter button {
+    padding: 8px 12px;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background-color 0.3s ease-in-out;
+}
+
+.albums-filter button:hover {
+    background-color: var(--bg-elevated);
+}
+
+.albums-filter button:last-child {
+    border-right: 0;
+}

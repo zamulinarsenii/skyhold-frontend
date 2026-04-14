@@ -1,0 +1,52 @@
+.smart-input {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.smart-input__name {
+    padding-left: 4px;
+}
+
+.smart-input input {
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.smart-input input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 2px var(--shadow-blue);
+}
+
+.smart-input .input-wrapper {
+    width: 100%;
+    position: relative;
+}
+
+.smart-input__error-message {
+    width: 100%;
+    height: 16px;
+    font-size: 12px;
+    padding-left: 4px;
+    color: var(--error-color);
+}
+
+.smart-input .password-toggle {
+    position: absolute;
+    right: 12px;
+    height: 100%;
+}
+
+.smart-input img {
+    filter: brightness(0) invert(1);
+    width: 20px;
+    height: 20px;
+}

@@ -1,0 +1,138 @@
+CREATE TABLE IF NOT EXISTS `skyhold`.`users` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `first_name` VARCHAR(20) NOT NULL,
+  `last_name` VARCHAR(20) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `admin` TINYINT NULL,
+  `registration_date` DATETIME NULL,
+  `hidden_album_password` VARCHAR(255) NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
+ENGINE = InnoDB
+
+CREATE TABLE `friends` (
+  `first_friend_id` INT NOT NULL,
+  `second_friend_id` INT NOT NULL,
+  `status` ENUM('pending','accepted','blocked') DEFAULT 'pending',
+  PRIMARY KEY (`first_friend_id`,`second_friend_id`),
+  FOREIGN KEY (`first_friend_id`) REFERENCES `users`(`id`) ON DELETE CASCADE,
+  FOREIGN KEY (`second_friend_id`) REFERENCES `users`(`id`) ON DELETE CASCADE,
+  CONSTRAINT `chk_friends_not_self` CHECK (`first_friend_id` != `second_friend_id`)
+);
+
+CREATE TABLE IF NOT EXISTS `skyhold`.`messages` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `message` VARCHAR(255) NOT NULL,
+  `createdAt` DATETIME NOT NULL,
+  `readAt` DATETIME NULL,
+  `sender_id` INT NOT NULL,
+  `recipient_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_messages_users1_idx` (`sender_id` ASC) VISIBLE,
+  INDEX `fk_messages_users2_idx` (`recipient_id` ASC) VISIBLE,
+  CONSTRAINT `fk_messages_users1`
+    FOREIGN KEY (`sender_id`)
+    REFERENCES `skyhold`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_messages_users2`
+    FOREIGN KEY (`recipient_id`)
+    REFERENCES `skyhold`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+
+CREATE TABLE IF NOT EXISTS `skyhold`.`images_storage` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `users_id` INT NOT NULL,
+  `file_path` VARCHAR(255) NOT NULL,
+  `original_name` VARCHAR(255) NOT NULL,
+  `createdAt` DATETIME NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_images_users_idx` (`users_id` ASC) VISIBLE,
+  CONSTRAINT `fk_images_users`
+    FOREIGN KEY (`users_id`)
+    REFERENCES `skyhold`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+
+CREATE TABLE `album` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `users_id` INT NOT NULL,
+  `visibility` ENUM('private','public','friends','selected_friends') NOT NULL DEFAULT 'private',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unique_user_album` (`users_id`,`name`),
+  FOREIGN KEY (`users_id`) REFERENCES `users`(`id`) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS `skyhold`.`album_has_images_storage` (
+  `images_storage_id` INT NOT NULL,
+  `album_id` INT NOT NULL,
+  PRIMARY KEY (`images_storage_id`, `album_id`),
+  INDEX `fk_images_storage_has_album_album1_idx` (`album_id` ASC) VISIBLE,
+  INDEX `fk_images_storage_has_album_images_storage1_idx` (`images_storage_id` ASC) VISIBLE,
+  CONSTRAINT `fk_images_storage_has_album_images_storage1`
+    FOREIGN KEY (`images_storage_id`)
+    REFERENCES `skyhold`.`images_storage` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_images_storage_has_album_album1`
+    FOREIGN KEY (`album_id`)
+    REFERENCES `skyhold`.`album` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+
+CREATE TABLE IF NOT EXISTS `skyhold`.`album_allowed_friends` (
+  `album_id` INT NOT NULL,
+  `friend_id` INT NOT NULL,
+  PRIMARY KEY (`album_id`, `friend_id`),
+  INDEX `fk_album_allowed_friends_users1_idx` (`friend_id` ASC) VISIBLE,
+  CONSTRAINT `fk_album_allowed_friends_album1`
+    FOREIGN KEY (`album_id`)
+    REFERENCES `skyhold`.`album` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_album_allowed_friends_users1`
+    FOREIGN KEY (`friend_id`)
+    REFERENCES `skyhold`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+
+CREATE TABLE IF NOT EXISTS `skyhold`.`user_basket_images` (
+  `users_id` INT NOT NULL,
+  `images_storage_id` INT NOT NULL,
+  PRIMARY KEY (`users_id`, `images_storage_id`),
+  INDEX `fk_user_basket_images_images_storage1_idx` (`images_storage_id` ASC),
+  CONSTRAINT `fk_user_basket_images_users1`
+    FOREIGN KEY (`users_id`)
+    REFERENCES `skyhold`.`users` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_user_basket_images_images_storage1`
+    FOREIGN KEY (`images_storage_id`)
+    REFERENCES `skyhold`.`images_storage` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+) ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `skyhold`.`user_favorite_images` (
+  `users_id` INT NOT NULL,
+  `images_storage_id` INT NOT NULL,
+  PRIMARY KEY (`users_id`, `images_storage_id`),
+  INDEX `fk_user_favorite_images_images_storage1_idx` (`images_storage_id` ASC),
+  CONSTRAINT `fk_user_favorite_images_users1`
+    FOREIGN KEY (`users_id`)
+    REFERENCES `skyhold`.`users` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_user_favorite_images_images_storage1`
+    FOREIGN KEY (`images_storage_id`)
+    REFERENCES `skyhold`.`images_storage` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+) ENGINE = InnoDB;
